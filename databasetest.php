@@ -20,21 +20,6 @@ if($result=mysqli_query($db_ossec, $query)){
 		alert(\"Problems checking database for information\");";
 }
 
-
-$query="SELECT count(id) as res_count
-	FROM alert";
-if($result=mysqli_query($db_ossec, $query)){
-	$row = @mysqli_fetch_assoc($result);
-	if(!$row['res_count']>0){
-		echo "
-		alert(\"Connected to database ok, but no data found. Ensure OSSEC is logging to your database.\");";
-	}
-}else{
-		echo "
-		alert(\"Problems checking database for information\");";
-}
-
-
 $query="SELECT count(id) as res_count
 	FROM location";
 if($result=mysqli_query($db_ossec, $query)){
