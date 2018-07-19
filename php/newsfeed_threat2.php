@@ -8,7 +8,7 @@
 		FROM alert
 		LEFT JOIN location ON location.id = alert.location_id 
 		LEFT JOIN signature ON signature.rule_id = alert.rule_id 
-		LEFT JOIN alert ON alert.id=alert.id
+		LEFT JOIN data ON alert.id=data.id
 		WHERE signature.level>4
 		AND alert.timestamp>".(time()-(86400*$glb_threatdays))." 
 		ORDER BY t1 DESC 
@@ -39,7 +39,7 @@
 			<td>".$row['source']."</td>
 			<td>".substr($row['description'], 0, 35)."...</td>
 			<td>".$row['level']."</td>
-			<td><a class='tooltip_small' href='detail.php?rule_id=".$row['rule_id']."&from=".date("Gi dmy", time()-(86400*30))."&source=".$row['source']."'>Link<span style='left:50px; width:700px;'>".$row['alert']."</span></a></td>
+			<td><a class='tooltip_small' href='detail.php?rule_id=".$row['rule_id']."&from=".date("Gi dmy", time()-(86400*30))."&source=".$row['source']."'>Link<span style='left:50px; width:700px;'>".$row['data']."</span></a></td>
 			</tr>";
 	}
 	echo "</table>";

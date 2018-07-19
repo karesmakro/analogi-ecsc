@@ -16,7 +16,7 @@ $query="SELECT 	count(alert.rule_id) as count,
 	AND signature.level>".$glb_threatlevel."
 	AND alert.rule_id = signature.rule_id
 	AND alert.location_id = location.id
-	AND alert.id = alert.id
+	AND alert.id = data.id
 	GROUP BY source, rule_id
 	ORDER BY level DESC, timestamp
 	LIMIT ".$glb_threatlimit.";";
